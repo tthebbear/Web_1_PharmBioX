@@ -1,0 +1,1349 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Favicon básico -->
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    
+    <!-- Favicon para dispositivos Apple -->
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    
+    <!-- Favicon moderno (PNG) -->
+    <link rel="icon" type="image/png" sizes="96x96" href="favicon-96x96.png">
+    
+    <!-- Manifest para aplicaciones web -->
+    <link rel="manifest" href="site.webmanifest">
+
+    <!-- Botón flotante de WhatsApp -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <title>PharmBioX - Formación Especializada</title>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #e74c3c;
+            --accent-color: #3498db;
+            --light-color: #ecf0f1;
+            --dark-color: #2c3e50;
+            --text-color: #333;
+            --text-light: #7f8c8d;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            color: var(--text-color);
+            background-color: #f0f7f4;
+            line-height: 1.6;
+        }
+        
+        /* Barra superior de contacto */
+        .top-contact-bar {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 10px 0;
+            font-size: 14px;
+        }
+        
+        .top-contact-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center; /* Centra horizontalmente los elementos */
+            align-items: center; /* Centra verticalmente */
+            flex-wrap: wrap; /* Permite que los elementos se envuelvan en pantallas pequeñas */
+            gap: 20px; /* Espacio entre elementos */
+            padding: 0 20px;
+        }
+        
+        .contact-info-top {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .contact-item-top {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            white-space: nowrap; /* Evita que el texto se divida en varias líneas */
+        }
+        
+        .contact-item-top a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .contact-item-top a:hover {
+            color: var(--light-color);
+        }
+        
+        /* Responsive para móviles */
+        @media (max-width: 768px) {
+            .top-contact-container {
+                flex-direction: column; /* Apila los elementos verticalmente */
+                gap: 8px; /* Reduce el espacio entre elementos */
+                padding: 10px 20px; /* Aumenta el padding vertical */
+            }
+    
+            .contact-item-top {
+                white-space: normal; /* Permite que el texto se divida en móviles si es necesario */
+                text-align: center; /* Centra el texto en móviles */
+            }
+        }
+
+        /* Header con logo y navegación */
+        .header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 15px 0;
+        }
+        
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .logo {
+            height: 70px; /* Altura fija */
+            width: auto; /* Ancho proporcional */
+            max-width: 5000px; /* Ancho máximo opcional */
+            object-fit: contain; /* Mantiene las proporciones */
+            transition: all 0.3s ease; /* Para efectos hover */
+        }
+
+        /* Efecto hover opcional */
+        .logo:hover {
+            transform: scale(1.05);
+            opacity: 0.9;
+        }
+
+        /* Versión responsive */
+        @media (max-width: 768px) {
+            .logo {
+                height: 70px;
+            }
+        }
+        
+        .logo-text {
+            font-size: 37px;
+            font-weight: 700;
+            color: #00A6FF;
+        }
+        
+        .logo-text span {
+            color: #5DFF4E;
+        }
+        
+        /* Menú de navegación */
+        .nav-menu {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .nav-item {
+            text-decoration: none;
+            color: var(--dark-color);
+            font-weight: 600;
+            padding: 8px 15px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-item:hover {
+            background-color: var(--light-color);
+        }
+        
+        .nav-item.active {
+            background-color: var(--secondary-color);
+            color: white;
+        }
+        
+        /* Contenido principal */
+        .container {
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+        
+        /* Estilos para pestañas */
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Estilos comunes para secciones */
+        .start-title {
+            text-align: center;
+            margin-bottom: none;
+        }
+        
+        .start-title h2 {
+            font-size: 20px;
+            color: var(--dark-color);
+            margin-bottom: 0px;
+        }
+        
+        .start-title p {
+            font-size: 18px;
+            color: var(--text-light);
+        }
+        
+        /* Estilos comunes para secciones */
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .section-title h2 {
+            font-size: 32px;
+            color: var(--dark-color);
+            margin-bottom: 10px;
+        }
+        
+        .section-title p {
+            font-size: 18px;
+            color: var(--text-light);
+        }
+        
+        /* Estilos para tarjetas de cursos/webinars */
+        .cards-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: center;
+            margin-bottom: 50px;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            overflow: hidden;
+            width: calc(33.333% - 20px);
+            transition: transform 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .card-image-placeholder {
+            width: 100%;
+            height: 110px; /* Altura reducida */
+            background-color: #e0e0e0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-light);
+            font-size: 16px;
+        }
+
+        /* Versión responsive */
+        @media (max-width: 768px) {
+            .card-image-placeholder {
+                height: 120px; /* Más reducida en móviles */
+            }
+        }
+        
+        .card-content {
+            padding: 20px;
+        }
+        
+        .card-date {
+            color: var(--secondary-color);
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        .card-title {
+            font-size: 20px;
+            color: var(--dark-color);
+            margin-bottom: 15px;
+        }
+        
+        .card-description {
+            color: var(--text-light);
+            margin-bottom: 20px;
+        }
+        
+        .card-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        .btn {
+            padding: 10px 15px;
+            border-radius: 5px;
+            text-align: center;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+        }
+        
+        .btn-faq {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .btn-faq:hover {
+            background-color: #1a252f;
+        }
+        
+        .btn-brochure {
+            background-color: var(--accent-color);
+            color: white;
+        }
+        
+        .btn-brochure:hover {
+            background-color: #2980b9;
+        }
+        
+        .btn-contact {
+            background-color: #25D366;
+            color: white;
+        }
+        
+        .btn-contact:hover {
+            background-color: #128C7E;
+        }
+        
+        /* Estilos para la sección de certificados */
+        .certificates-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+        
+        .certificate-card {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            width: 300px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .certificate-card:hover {
+            transform: scale(1.05);
+        }
+        
+        .certificate-icon {
+            font-size: 50px;
+            color: var(--secondary-color);
+            margin-bottom: 20px;
+        }
+        
+        /* Footer */
+        .footer {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 30px 0;
+            margin-top: 50px;
+        }
+        
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            padding: 0 20px;
+        }
+        
+        .copyright {
+            text-align: center;
+            font-size: 14px;
+            color: rgba(255,255,255,0.7);
+        }
+        
+        /* Responsive */
+        @media (max-width: 992px) {
+            .card {
+                width: calc(50% - 15px);
+            }
+            
+            .header-container {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .nav-menu {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .card {
+                width: 100%;
+            }
+            
+            .top-contact-container {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .contact-info-top {
+                flex-direction: column;
+                gap: 10px;
+                align-items: center;
+            }
+        }
+
+        /* Estilos para la sección de ¿ayuda? */
+        .ayuda-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+        
+        .ayuda-card {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            width: 300px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .ayuda-card:hover {
+            transform: scale(1.05);
+        }
+        
+        .ayuda-icon {
+            font-size: 50px;
+            color: var(--secondary-color);
+            margin-bottom: 20px;
+        }
+        
+        /* Footer */
+        .footer {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 30px 0;
+            margin-top: 50px;
+        }
+        
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            padding: 0 20px;
+        }
+        
+        .contact-footer-item a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            margin-left: 5px;
+        }
+        .contact-footer-item a:hover {
+            text-align: center;            
+            color: #ddd; /* Color verde de WhatsApp al hacer hover es el código: #25D366*/
+            text-decoration: none;
+        }
+
+        .copyright {
+            text-align: center;
+            font-size: 14px;
+            color: rgba(255,255,255,0.7);
+        }
+        
+        /* Responsive */
+        @media (max-width: 992px) {
+            .card {
+                width: calc(50% - 15px);
+            }
+            
+            .header-container {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .nav-menu {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .card {
+                width: 100%;
+            }
+            
+            .top-contact-container {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .contact-info-top {
+                flex-direction: column;
+                gap: 10px;
+                align-items: center;
+            }
+        }
+
+        /* Estilos para el modal de preguntas frecuentes */
+        .faq-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.7);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .faq-content {
+            background-color: white;
+            width: 80%;
+            max-width: 600px;
+            max-height: 80vh;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            overflow-y: auto;
+            position: relative;
+        }
+
+        .close-faq {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 24px;
+            cursor: pointer;
+            color: var(--text-light);
+        }
+
+        .faq-item {
+            margin-bottom: 20px;
+        }
+
+        .faq-question {
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 8px;
+            font-size: 18px;
+        }
+
+        .faq-answer {
+            color: var(--text-color);
+            line-height: 1.5;
+        }
+
+        /* Estilos para modales legales */
+        .legal-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.7);
+            z-index: 1000;
+            overflow-y: auto;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .legal-content {
+            background: white;
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 30px;
+            border-radius: 8px;
+            position: relative;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 28px;
+            cursor: pointer;
+            color: #666;
+        }
+
+        .legal-text {
+            margin-top: 20px;
+            line-height: 1.6;
+        }
+
+        /* Enlaces en footer */
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            text-align: center; 
+            color: #ddd;
+            text-decoration: none;
+        }
+
+        /* Estilos para el botón flotante de WhatsApp */
+        .float-whatsapp {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            bottom: 40px;
+            right: 70px;
+            background-color: #25d366;
+            color: #FFF;
+            border-radius: 50px;
+            text-align: center;
+            font-size: 37px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            animation: pulse 2s infinite;
+            text-decoration: none;
+        }
+
+        .float-whatsapp:hover {
+            background-color: #25d366; /* Para cambio de color es el código: #128c7e */
+            transform: scale(1.1);
+            text-decoration: none;
+            color: #fff;
+        }
+
+        .float-whatsapp .tooltip {
+            visibility: hidden;
+            width: 140px;
+            background-color: #555;
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 5px;
+            position: absolute;
+            z-index: 1;
+            bottom: 125%;
+            left: 43%;
+            margin-left: -70px;
+            opacity: 0;
+            transition: opacity 0.3s;
+            font-size: 14px;
+        }
+
+        .float-whatsapp .tooltip::after {
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            margin-left: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: #555 transparent transparent transparent;
+        }
+
+        .float-whatsapp:hover .tooltip {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        /* Animación de pulso */
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+            }
+            70% {
+        box-shadow: 0 0 0 10px rgba(37, 211, 102, 0);
+            }
+            100% {
+        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+            }
+        }
+
+        /* Versión responsive */
+        @media (max-width: 768px) {
+            .float-whatsapp {
+                width: 50px;
+                height: 50px;
+                bottom: 20px;
+                right: 35px;
+                font-size: 25px;
+            }
+        }
+
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <!-- Barra superior de contacto -->
+    <div class="top-contact-bar">
+        <div class="top-contact-container">
+            <div class="contact-info-top">
+                <div class="contact-item-top">
+                    <i class="fas fa-phone"></i>
+                    <span>+593 97 880 4190</span>
+                </div>
+                <div class="contact-item-top">
+                    <i class="fas fa-envelope"></i>
+                    <a href="mailto:info@pharmbiox.com">info@pharmbiox.com</a>
+                </div>
+            </div>
+            <div class="contact-item-top">
+                <i class="fas fa-clock"></i>
+                <span>Lunes a Sábado: 8:00 AM - 5:00 PM</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Botón flotante de WhatsApp -->
+    <a href="https://wa.me/593978804190" class="float-whatsapp" target="_blank" rel="noopener noreferrer">
+        <i class="fab fa-whatsapp"></i>
+        <span class="tooltip">¿Necesitas ayuda?</span>
+    </a>
+
+    <!-- Header con logo y navegación -->
+    <header class="header">
+        <div class="header-container">
+            <div class="logo-container">
+                <img src="logotipo.png" alt="Logo PharmBioX" class="logo">
+                <div class="logo-text">Pharm<span>BioX</span></div>
+            </div>
+            
+            <nav class="nav-menu">
+                <a href="#" class="nav-item active" data-tab="inicio">Inicio</a>
+                <a href="#" class="nav-item" data-tab="empresa">Empresa</a>
+                <a href="#" class="nav-item" data-tab="cursos">Cursos</a>
+                <a href="#" class="nav-item" data-tab="webinars">Webinars</a>
+                <a href="#" class="nav-item" data-tab="certificados">Certificados</a>
+                <a href="#" class="nav-item" data-tab="¿ayuda?">¿Ayuda?</a>
+            </nav>
+        </div>
+    </header>
+    
+    <!-- Contenido principal -->
+    <div class="container">
+        <!-- Pestaña Inicio -->
+        <div id="inicio" class="tab-content active">
+            <section>
+                <div class="start-title">
+                    <h2>Bienvenidos a </h2>
+                    <img src="letra.png" alt="Logo PharmBioX" style="width: auto; height: 80px; margin-bottom: 0px;">
+                    <p style="margin-top: -10px;">Formación especializada en farmacología y biotecnología </p>
+                </div>
+                
+                <div style="text-align: center; max-width: 800px; margin: 0 auto;">
+                    <p>Somos líderes en formación especializada para profesionales de la salud e investigadores. Nuestros programas combinan lo último en conocimiento científico con aplicaciones prácticas en el mundo real.</p>
+                    <p>Ofrecemos cursos, webinars diseñados para impulsar tu carrera en el sector farmacéutico y biotecnológico.</p>
+                    <p> Certificados auspiciados por Ministerio de Salud Pública. </p>
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/5/50/Ministerio_de_Salud_P%C3%BAblica_de_Ecuador_logo.svg" alt="Logo PharmBioX" class="logo">
+                </div>
+                
+                <div style="display: flex; justify-content: center; gap: 30px; margin-top: 40px; flex-wrap: wrap;">
+                    <div style="background: white; padding: 20px; border-radius: 10px; width: 200px; text-align: center; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
+                        <i class="fas fa-users" style="font-size: 40px; color: var(--secondary-color); margin-bottom: 15px;"></i>
+                        <h3><span id="student-counter">0</span> Estudiantes</h3>
+                    </div>
+                    <div style="background: white; padding: 20px; border-radius: 10px; width: 200px; text-align: center; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
+                        <i class="fas fa-chalkboard-teacher" style="font-size: 40px; color: var(--secondary-color); margin-bottom: 15px;"></i>
+                        <h3><span id="courses-counter">0</span> Cursos</h3>
+                    </div>
+                    <div style="background: white; padding: 20px; border-radius: 10px; width: 200px; text-align: center; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
+                        <i class="fas fa-certificate" style="font-size: 40px; color: var(--secondary-color); margin-bottom: 15px;"></i>
+                        <h3>Certificaciones</h3>
+                    </div>
+                </div>
+            </section>
+        </div>
+        
+        <!-- Pestaña Empresa -->
+        <div id="empresa" class="tab-content">
+            <section>
+                <div class="section-title">
+                    <h2>Nuestra Empresa</h2>
+                    <p>Conoce más sobre nuestra misión y valores</p>
+                </div>
+                
+                <div style="display: flex; gap: 30px; flex-wrap: wrap; justify-content: center; margin-bottom: 40px;">
+                    <div style="flex: 1; min-width: 300px; background: white; padding: 30px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
+                        <h3 style="color: var(--secondary-color); border-bottom: 2px solid var(--light-color); padding-bottom: 10px;">Misión</h3>
+                        <p>Formar profesionales mediante soluciones integrales en el campo de la Bioquímica y Farmacia a través de análisis especializados, asesorías técnicas, herramientas innovadoras y compromiso con la salud y bienestar.</p>
+                        <p>“Trabajamos para ser el puente entre la ciencia y la aplicación práctica.”</p>
+                    </div>
+                    <div style="flex: 1; min-width: 300px; background: white; padding: 30px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
+                        <h3 style="color: var(--secondary-color); border-bottom: 2px solid var(--light-color); padding-bottom: 10px;">Visión</h3>
+                        <p>Ser líderes en la innovación, desarrollo e investigación, reconocida por su excelencia, ética profesional, mejora de procesos clínicos, convergencia de la tecnología y farmacéutica.</p>
+                    </div>
+                </div>
+                
+                <div style="background: white; padding: 30px; border-radius: 10px; margin-top: 30px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
+                    <h3 style="color: var(--secondary-color); text-align: center; margin-bottom: 20px;">Nuestro Equipo</h3>
+                    <div style="display: flex; gap: 30px; flex-wrap: wrap; justify-content: center;">
+                        <div style="text-align: center; width: 200px;">
+                            <div style="width: 150px; height: 150px; background-color: #e0e0e0; border-radius: 50%; margin: 0 auto 15px; display: flex; align-items: center; justify-content: center;">
+                                <i class="fas fa-user" style="font-size: 50px; color: var(--text-light);"></i>
+                            </div>
+                            <h4>BF. Gordón Daniel</h4>
+                            <p style="color: var(--text-light); font-size: 14px;">Director Académico</p>
+                        </div>
+                        <div style="text-align: center; width: 200px;">
+                            <div style="width: 150px; height: 150px; background-color: #e0e0e0; border-radius: 50%; margin: 0 auto 15px; display: flex; align-items: center; justify-content: center;">
+                                <i class="fas fa-user" style="font-size: 50px; color: var(--text-light);"></i>
+                            </div>
+                            <h4>BF. Marla Galeano</h4>
+                            <p style="color: var(--text-light); font-size: 14px;">Coordinadora de Cursos</p>
+                        </div>
+                        <div style="text-align: center; width: 200px;">
+                            <div style="width: 150px; height: 150px; background-color: #e0e0e0; border-radius: 50%; margin: 0 auto 15px; display: flex; align-items: center; justify-content: center;">
+                                <i class="fas fa-user" style="font-size: 50px; color: var(--text-light);"></i>
+                            </div>
+                            <h4>Lic. XXXXXXX</h4>
+                            <p style="color: var(--text-light); font-size: 14px;">Coordinador de Webinars</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        
+        <!-- Pestaña Cursos -->
+        <div id="cursos" class="tab-content">
+            <section>
+                <div class="section-title">
+                    <h2>Nuestros Cursos</h2>
+                    <p>Programas especializados en farmacología y biotecnología</p>
+                </div>
+                
+                <div class="cards-container">
+                    <!-- Curso 1 -->
+                    <div class="card">
+                        <div class="card-image-placeholder">
+                            <h3 class="card-title">Diseño de Fármacos Computacional</h3>
+                        </div>
+                        <div class="card-content">
+                            <div class="card-date">Inicio: 5 de Julio, 2023</div>
+                            <h3 class="card-title" style="font-size: 15px; color: #999;">Descripción</h3>
+                            <p class="card-description">Domina las herramientas computacionales para el diseño racional de nuevos fármacos.</p>
+                            <div class="card-buttons">
+                                <a href="#faq" class="btn btn-faq" data-faq="curso1">Preguntas Frecuentes</a>
+                                <a href="https://drive.google.com/file/d/1RuUFG9vsc3rzi-76Og_6O6s5jMfbQeDw/view?usp=drive_link" class="btn btn-brochure" download>Descargar Brochure</a>
+                                <a href="https://wa.me/593978804190?text=Estoy%20interesado%20en%20el%20curso%20de%20Diseño%20de%20Fármacos" class="btn btn-contact" target="_blank">Contáctanos</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Curso 2 -->
+                    <div class="card">
+                        <div class="card-image-placeholder">
+                            <h3 class="card-title">Terapias Génicas y Celulares</h3>
+                        </div>
+                        <div class="card-content">
+                            <div class="card-date">Inicio: 12 de Julio, 2023</div>
+                            <h3 class="card-title" style="font-size: 15px; color: #999;">Descripción</h3>
+                            <p class="card-description">Aprende los fundamentos y aplicaciones clínicas de las terapias génicas y celulares.</p>
+                            <div class="card-buttons">
+                                <a href="#faq" class="btn btn-faq" data-faq="curso2">Preguntas Frecuentes</a>
+                                <a href="https://pharmbiox.com/brochures/curso2.pdf" class="btn btn-brochure" download>Descargar Brochure</a>
+                                <a href="https://wa.me/593978804190?text=Estoy%20interesado%20en%20el%20curso%20de%20Terapias%20Génicas" class="btn btn-contact" target="_blank">Contáctanos</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Curso 3 -->
+                    <div class="card">
+                        <div class="card-image-placeholder">
+                            <h3 class="card-title" style="text-align: center;">Bioinformática Aplicada a la Farmacología</h3>
+                        </div>
+                        <div class="card-content">
+                            <div class="card-date">Inicio: 19 de Julio, 2023</div>
+                            <h3 class="card-title" style="font-size: 15px; color: #999;">Descripción</h3>
+                            <p class="card-description">Utiliza herramientas bioinformáticas para el análisis de datos farmacológicos.</p>
+                            <div class="card-buttons">
+                                <a href="#faq" class="btn btn-faq" data-faq="curso3">Preguntas Frecuentes</a>
+                                <a href="https://pharmbiox.com/brochures/curso3.pdf" class="btn btn-brochure" download>Descargar Brochure</a>
+                                <a href="https://wa.me/593978804190?text=Estoy%20interesado%20en%20el%20curso%20de%20Bioinformática" class="btn btn-contact" target="_blank">Contáctanos</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        
+        <!-- Pestaña Webinars -->
+        <div id="webinars" class="tab-content">
+            <section>
+                <div class="section-title">
+                    <h2>Webinars y Eventos</h2>
+                    <p>Participa en nuestros eventos en línea y amplía tus conocimientos</p>
+                </div>
+                
+                <div class="cards-container">
+                    <!-- Webinar 1 -->
+                    <div class="card">
+                        <div class="card-image-placeholder">
+                            <h3 class="card-title">Avances en Farmacología Molecular</h3>
+                        </div>
+                        <div class="card-content">
+                            <div class="card-date">15 de Junio, 2023 | 10:00 AM</div>
+                            <h3 class="card-title" style="font-size: 15px; color: #999;">Descripción</h3>
+                            <p class="card-description">Explora los últimos desarrollos en farmacología molecular y sus aplicaciones en la medicina moderna.</p>
+                            <div class="card-buttons">
+                                <a href="#faq" class="btn btn-faq" data-faq="webinar1">Preguntas Frecuentes</a>
+                                <a href="https://pharmbiox.com/brochures/webinar1.pdf" class="btn btn-brochure" download>Descargar Brochure</a>
+                                <a href="https://wa.me/593978804190?text=Estoy%20interesado%20en%20el%20webinar%20de%20Farmacología%20Molecular" class="btn btn-contact" target="_blank">Contáctanos</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Webinar 2 -->
+                    <div class="card">
+                        <div class="card-image-placeholder">
+                            <h3 class="card-title">Biotecnología Aplicada a la Salud</h3>
+                        </div>
+                        <div class="card-content">
+                            <div class="card-date">22 de Junio, 2023 | 3:00 PM</div>
+                            <h3 class="card-title" style="font-size: 15px; color: #999;">Descripción</h3>
+                            <p class="card-description">Descubre cómo la biotecnología está revolucionando el diagnóstico y tratamiento de enfermedades.</p>
+                            <div class="card-buttons">
+                                <a href="#faq" class="btn btn-faq" data-faq="webinar2">Preguntas Frecuentes</a>
+                                <a href="https://pharmbiox.com/brochures/webinar2.pdf" class="btn btn-brochure" download>Descargar Brochure</a>
+                                <a href="https://wa.me/593978804190?text=Estoy%20interesado%20en%20el%20webinar%20de%20Biotecnología%20Aplicada" class="btn btn-contact" target="_blank">Contáctanos</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Webinar 3 -->
+                    <div class="card">
+                        <div class="card-image-placeholder">
+                            <h3 class="card-title">Nanotecnología Farmacéutica</h3>
+                        </div>
+                        <div class="card-content">
+                            <div class="card-date">29 de Junio, 2023 | 11:00 AM</div>
+                            <h3 class="card-title" style="font-size: 15px; color: #999;">Descripción</h3>
+                            <p class="card-description">Aprende sobre las aplicaciones de la nanotecnología en el desarrollo de nuevos fármacos.</p>
+                            <div class="card-buttons">
+                                <a href="#faq" class="btn btn-faq" data-faq="webinar3">Preguntas Frecuentes</a>
+                                <a href="https://pharmbiox.com/brochures/webinar3.pdf" class="btn btn-brochure" download>Descargar Brochure</a>
+                                <a href="https://wa.me/593978804190?text=Estoy%20interesado%20en%20el%20webinar%20de%20Nanotecnología%20Farmacéutica" class="btn btn-contact" target="_blank">Contáctanos</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        
+        <!-- Pestaña Certificados -->
+        <div id="certificados" class="tab-content">
+            <section>
+                <div class="section-title">
+                    <h2>Certificados</h2>
+                    <p>Verifica y descarga tus certificados de participación</p>
+                </div>
+                
+                <div class="certificates-container">
+                    <div class="certificate-card">
+                        <div class="certificate-icon">
+                            <i class="fas fa-certificate"></i>
+                        </div>
+                        <h3>Verificar Certificado</h3>
+                        <p>Ingresa tu código de certificado para verificar su autenticidad</p>
+                        <a href="https://certificados.pharmbiox.com/verificar" class="btn" style="background-color: var(--secondary-color); color: white; display: inline-block; margin-top: 15px;" target="_blank">Verificar Ahora</a>
+                    </div>
+                    
+                    <div class="certificate-card">
+                        <div class="certificate-icon">
+                            <i class="fas fa-download"></i>
+                        </div>
+                        <h3>Descargar Certificado</h3>
+                        <p>Accede a tu certificado digital con tu usuario y contraseña</p>
+                        <a href="https://script.google.com/macros/s/AKfycbxPqFzePfkjY6s-S6nfQn8plAQ-v9CpW1zFbDUOMHMslwG6tB_ASzB4V_ozsYaWwutB/exec" class="btn" style="background-color: var(--accent-color); color: white; display: inline-block; margin-top: 15px;" target="_blank">Descargar Ahora</a>
+                    </div>
+                    
+                    <div class="certificate-card">
+                        <div class="certificate-icon">
+                            <i class="fas fa-question-circle"></i>
+                        </div>
+                        <h3>Ayuda con Certificados</h3>
+                        <p>¿Problemas con tu certificado? Contáctanos para ayudarte</p>
+                        <a href="https://wa.me/593978804190?text=Necesito%20ayuda%20con%20mi%20certificado" class="btn" style="background-color: #25D366; color: white; display: inline-block; margin-top: 15px;" target="_blank">Solicitar Ayuda</a>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Pestaña ¿Ayuda? -->
+        <div id="¿ayuda?" class="tab-content">
+            <section>
+                <div class="section-title">
+                    <h2>¿Ayuda?</h2>
+                    <p>Para acercarnos mucho más</p>
+                </div>
+                
+                <div class="ayuda-container">
+                    <div class="ayuda-card">
+                        <div class="ayuda-icon">
+                            <i class="fab fa-whatsapp"></i>
+                        </div>
+                        <h3>Contáctate al</h3>
+                        <p>+593 978 804 190</p>
+                        <a href="https://wa.me/593978804190?text=Necesito%20ayuda%20con%20mi%20certificado" class="btn" style="background-color: var(--secondary-color); color: white; display: inline-block; margin-top: 15px;" target="_blank">Contactarme Ahora</a>
+                    </div>
+                    
+                    <div class="ayuda-card">
+                        <div class="ayuda-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h3>Comunidad PharmBioX</h3>
+                        <p>Unete a la comunidad para que estes al tanto de todas las actualizaciones</p>
+                        <a href="https://wa.me/593978804190?text=Necesito%20ayuda%20con%20mi%20certificado" class="btn" style="background-color: var(--accent-color); color: white; display: inline-block; margin-top: 15px;" target="_blank">Unirme Ahora</a>
+                    </div>
+                    
+                    <div class="ayuda-card">
+                        <div class="ayuda-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <h3>Correo Electrónico</h3>
+                        <p>info@pharmbiox.com</p>
+                        <a href="mailto:info@pharmbiox.com" class="btn" style="background-color: #25D366; color: white; display: inline-block; margin-top: 15px;" target="_blank">Gestión Interna</a>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+        
+        <!-- Recuadro de preguntas frecuentes -->
+        <div id="faqModal" class="faq-modal">
+            <div class="faq-content">
+                <span class="close-faq">&times;</span>
+                <h3 id="faq-title">Preguntas Frecuentes</h3>
+                <div id="faq-content-container"></div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-container">
+                <div class="footer-links">
+                <a href="#terms" class="legal-link" style="text-decoration: none">Términos y Condiciones</a>
+                <span> | </span>
+                <a href="#privacy" class="legal-link" style="text-decoration: none">Política de Privacidad</a>
+            </div>
+    
+            <div class="contact-footer">
+                <div class="contact-footer-item">
+                    <i class="fas fa-phone"></i>
+                    <span>Contáctanos: +593 97 880 4190</span>
+                    <span> | </span>
+                    <a href="https://wa.me/593978804190" target="_blank" style="text-decoration: none;">
+                        <i class="fab fa-whatsapp"></i> Escríbenos por WhatsApp</a>
+                </div>
+            </div>
+
+                <div class="copyright">
+                ©2025 PharmBioX | Todos los derechos reservados.
+                </div>
+            </div>
+        </footer>
+
+        <div id="termsModal" class="legal-modal">
+            <div class="legal-content">
+                <span class="close-modal">&times;</span>
+                <h2>Términos y Condiciones</h2>
+                <div class="legal-text">
+                    <!-- Contenido de términos aquí -->
+                    <p>1. Al usar este sitio aceptas nuestros términos...</p>
+                    <p>2. Todo el contenido es propiedad intelectual de PharmBioX...</p>
+                    <!-- Añade más contenido -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal para Privacidad -->
+        <div id="privacyModal" class="legal-modal">
+            <div class="legal-content">
+                <span class="close-modal">&times;</span>
+                <h2>Política de Privacidad</h2>
+                <div class="legal-text">
+                    <!-- Contenido de privacidad aquí -->
+                    <p>1. Todo los usado...</p>
+                    <p>2. Usamos cookies para...</p>
+                    <!-- Añade más contenido -->
+                </div>
+            </div>
+        </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Manejar el cambio de pestañas
+            const tabItems = document.querySelectorAll('.nav-item[data-tab]');
+            tabItems.forEach(item => {
+                item.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    // Remover clase active de todos los items
+                    tabItems.forEach(tab => tab.classList.remove('active'));
+                    
+                    // Añadir clase active al item clickeado
+                    this.classList.add('active');
+                    
+                    // Ocultar todos los contenidos
+                    document.querySelectorAll('.tab-content').forEach(content => {
+                        content.classList.remove('active');
+                    });
+                    
+                    // Mostrar el contenido correspondiente
+                    const tabId = this.getAttribute('data-tab');
+                    document.getElementById(tabId).classList.add('active');
+                });
+            });
+        });
+            // Animación de contador con efecto easing
+            function animateCounter(elementId, targetNumber, duration = 15000) {
+                const element = document.getElementById(elementId);
+                const startTime = performance.now();
+    
+                function updateCounter(currentTime) {
+                    const elapsedTime = currentTime - startTime;
+                    const progress = Math.min(elapsedTime / duration, 1);
+        
+                    // Easing function for smooth acceleration/deceleration
+                    const easedProgress = progress < 0.5 
+                        ? 2 * progress * progress 
+                        : 1 - Math.pow(-2 * progress + 2, 2) / 2;
+        
+                    const currentNumber = Math.floor(easedProgress * targetNumber);
+                    element.textContent = "+" + currentNumber;
+        
+                    if (progress < 1) {
+                        requestAnimationFrame(updateCounter);
+                    } else {
+                        element.textContent = "+" + targetNumber;
+                    }
+                }
+    
+                requestAnimationFrame(updateCounter);
+            }
+
+            // Iniciar animaciones cuando el contenido esté cargado
+            document.addEventListener('DOMContentLoaded', function() {
+                // Contador de estudiantes (0 a 500 en 15 segundos)
+                animateCounter("student-counter", 500);
+    
+                // Contador de cursos (0 a 30 en 11 segundos)
+                animateCounter("courses-counter", 30, 11000);
+    
+                // Si deseas animar el tercer elemento más tarde:
+                // setTimeout(() => animateCounter("certificates-counter", 100), 1000);
+            });
+
+
+        document.addEventListener('DOMContentLoaded', function() {
+            // Datos de las preguntas frecuentes (puedes ponerlos en variables separadas)
+            const faqs = {
+                curso1: [
+                    {
+                        question: "¿Quién puede participar en este webinar?",
+                        answer: "Este webinar está dirigido a profesionales de la salud, investigadores y estudiantes interesados en farmacología molecular."
+                    },
+                    {
+                        question: "¿Se requiere conocimiento previo?",
+                        answer: "Se recomienda tener conocimientos básicos de farmacología, pero no es obligatorio."
+                    },
+                    {
+                        question: "¿Se requiere conocimiento previo?",
+                        answer: "Se recomienda tener conocimientos básicos de farmacología, pero no es obligatorio."
+                    }
+                ],
+                curso2: [
+                    {
+                        question: "¿Quién puede participar en este webinar?",
+                        answer: "Este webinar está dirigido a profesionales de la salud, investigadores y estudiantes interesados en farmacología molecular."
+                    },
+                    {
+                        question: "¿Se requiere conocimiento previo?",
+                        answer: "Se recomienda tener conocimientos básicos de farmacología, pero no es obligatorio."
+                    }
+                ],
+                curso3: [
+                    {
+                        question: "¿Quién puede participar en este webinar?",
+                        answer: "Este webinar está dirigido a profesionales de la salud, investigadores y estudiantes interesados en farmacología molecular."
+                    },
+                    {
+                        question: "¿Se requiere conocimiento previo?",
+                        answer: "Se recomienda tener conocimientos básicos de farmacología, pero no es obligatorio."
+                    }
+                ],
+
+                webinar1: [
+                    {
+                        question: "¿Quién puede participar en este webinar?",
+                        answer: "Este webinar está dirigido a profesionales de la salud, investigadores y estudiantes interesados en farmacología molecular."
+                    },
+                    {
+                        question: "¿Se requiere conocimiento previo?",
+                        answer: "Se recomienda tener conocimientos básicos de farmacología, pero no es obligatorio."
+                    },
+                    {
+                        question: "¿Se requiere conocimiento previo?",
+                        answer: "Se recomienda tener conocimientos básicos de farmacología, pero no es obligatorio."
+                    },
+                    {
+                        question: "¿Se requiere conocimiento previo?",
+                        answer: "Se recomienda tener conocimientos básicos de farmacología, pero no es obligatorio."
+                    },
+                    {
+                        question: "¿Se requiere conocimiento previo?",
+                        answer: "Se recomienda tener conocimientos básicos de farmacología, pero no es obligatorio."
+                    }
+                ],
+                webinar2: [
+                    {
+                        question: "¿Quién puede participar en este webinar?",
+                        answer: "Este webinar está dirigido a profesionales de la salud, investigadores y estudiantes interesados en farmacología molecular."
+                    },
+                    {
+                        question: "¿Se requiere conocimiento previo?",
+                        answer: "Se recomienda tener conocimientos básicos de farmacología, pero no es obligatorio."
+                    },
+                    {
+                        question: "¿Se requiere conocimiento previo?",
+                        answer: "Se recomienda tener conocimientos básicos de farmacología, pero no es obligatorio."
+                    },
+                    {
+                        question: "¿Se requiere conocimiento previo?",
+                        answer: "Se recomienda tener conocimientos básicos de farmacología, pero no es obligatorio."
+                    }
+                ],
+                webinar3: [
+                    {
+                        question: "¿Quién puede participar en este webinar?",
+                        answer: "Este webinar está dirigido a profesionales de la salud, investigadores y estudiantes interesados en farmacología molecular."
+                    },
+                    {
+                        question: "¿Se requiere conocimiento previo?",
+                        answer: "Se recomienda tener conocimientos básicos de farmacología, pero no es obligatorio."
+                    },
+                    {
+                        question: "¿Se requiere conocimiento previo?",
+                        answer: "Se recomienda tener conocimientos básicos de farmacología, pero no es obligatorio."
+                    },
+                    {
+                        question: "¿Se requiere conocimiento previo?",
+                        answer: "Se recomienda tener conocimientos básicos de farmacología, pero no es obligatorio."
+                    },
+                    {
+                        question: "¿Se requiere conocimiento previo?",
+                        answer: "Se recomienda tener conocimientos básicos de farmacología, pero no es obligatorio."
+                    }
+                ],
+
+            };
+
+            // Manejar clic en botones de FAQ
+            document.querySelectorAll('.btn-faq').forEach(button => {
+                button.addEventListener('click', function() {
+                    const faqId = this.getAttribute('data-faq');
+                    const cardTitle = this.closest('.card').querySelector('.card-title').textContent;
+            
+                    // Mostrar el título del webinar/curso
+                    document.getElementById('faq-title').textContent = `Preguntas Frecuentes: ${cardTitle}`;
+            
+                    // Generar contenido de preguntas
+                    const faqContainer = document.getElementById('faq-content-container');
+                    faqContainer.innerHTML = '';
+            
+                    if(faqs[faqId]) {
+                        faqs[faqId].forEach(item => {
+                            faqContainer.innerHTML += `
+                                <div class="faq-item">
+                                    <div class="faq-question">${item.question}</div>
+                                    <div class="faq-answer">${item.answer}</div>
+                                </div>
+                            `;
+                        });
+                    } else {
+                        faqContainer.innerHTML = '<p>No hay preguntas frecuentes disponibles para este ítem.</p>';
+                    }
+            
+                    // Mostrar modal
+                    document.getElementById('faqModal').style.display = 'flex';
+                });
+            });
+    
+            // Cerrar modal
+            document.querySelector('.close-faq').addEventListener('click', function() {
+                document.getElementById('faqModal').style.display = 'none';
+            });
+    
+            // Cerrar al hacer clic fuera del contenido
+            document.getElementById('faqModal').addEventListener('click', function(e) {
+                if(e.target === this) {
+                    this.style.display = 'none';
+                }
+            });
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            // Controlador para abrir modales
+            document.querySelectorAll('.legal-link').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const target = this.getAttribute('href').substring(1);
+                    document.getElementById(target + 'Modal').style.display = 'block';
+                });
+            });
+
+            // Cerrar modales
+            document.querySelectorAll('.close-modal').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    this.closest('.legal-modal').style.display = 'none';
+                });
+            });
+
+            // Cerrar al hacer clic fuera del contenido
+            document.querySelectorAll('.legal-modal').forEach(modal => {
+                modal.addEventListener('click', function(e) {
+                    if (e.target === this) {
+                        this.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+    </script>
+</body>
+</html>
